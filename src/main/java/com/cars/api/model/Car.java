@@ -1,5 +1,8 @@
 package com.cars.api.model;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 import com.cars.api.dto.CarDTO;
 
 import jakarta.persistence.Column;
@@ -15,12 +18,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Car {
 
-  public Car(CarDTO data) {
-    this.modelo = data.modelo();
-    this.fabricante = data.fabricante();
-    this.dataFabricacao = data.dataFabricacao();
-    this.valor = data.valor();
-    this.anoModelo = data.anoModelo();
+  public Car(CarDTO req) {
+    this.modelo = req.modelo();
+    this.fabricante = req.fabricante();
+    this.dataFabricacao = req.dataFabricacao();
+    this.valor = req.valor();
+    this.anoModelo = req.anoModelo();
   }
 
   @Id
@@ -34,10 +37,10 @@ public class Car {
   private String fabricante;
 
   @Column(length = 10, nullable = false)
-  private String dataFabricacao;
+  private Date dataFabricacao;
 
   @Column(length = 100, nullable = false)
-  private float valor;
+  private BigDecimal valor;
 
   @Column(length = 200, nullable = false)
   private int anoModelo;
